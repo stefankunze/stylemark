@@ -207,7 +207,8 @@ class Parser {
 						// otherwise, resolve the source file relative to the component file's directory
 						sourcePath = path.resolve(componentDir, externalSourceFilename);
 					}
-					content = fs.readFileSync(sourcePath, 'utf8');
+
+					content = includePartials(content, sourcePath);
 
 					// replace the external source definition block in the description with the content from the external source
 					var regexp = new RegExp('```\\s*' + name + '\\:' + externalSource + '\\.' + language + '(.*\n)+?```', 'gm');
@@ -257,6 +258,23 @@ class Parser {
 
 		return description;
 	}
+}
+
+function includePartials(content, sourcePath) {
+	var regex = /<include data-src=["'](.*)["']><\/include>/gi;
+
+	content = fs.readFileSync(sourcePath, 'utf8');
+	sourcePath = sourcePath.substring(0, sourcePath.lastIndexOf('/')) + '/';
+
+	content = content.replace(regex, function(match, capture) {
+		if (fs.existsSync(sourcePath + capture)) {
+		    return fs.readFileSync(sourcePath + capture, 'utf8');
+		}
+
+		return match;
+	});
+
+	return content;
 }
 
 function getDocBlocks(content, language) {
