@@ -90,6 +90,7 @@ class Parser {
 		var component = new Component();
 		component.setName(markdown.data.name);
 		component.setCategory(markdown.data.category);
+		component.setStatus(markdown.data.status);
 		component.setFilepath(filepath);
 
 		var metadata = _.omit(markdown.data, ['name', 'category']);

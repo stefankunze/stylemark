@@ -54,6 +54,20 @@ class Component {
 	/**
 	 * @return {String}
 	 */
+	getStatus() {
+		return this.status;
+	}
+
+	/**
+	 * @param {String} status
+	 */
+	setStatus(status) {
+		this.status = status;
+	}
+
+	/**
+	 * @return {String}
+	 */
 	getDescription() {
 		return this.description;
 	}
@@ -150,6 +164,7 @@ class Component {
 	 * If set on this component, these fields will be overwritten in the given component:
 	 * - name
 	 * - category
+	 * - status
 	 * - source
 	 * - filepath
 	 *
@@ -165,6 +180,7 @@ class Component {
 
 		to.name = from.name;
 		to.category = from.category || to.category;
+		to.status = from.status || to.status;
 		to.source = from.source || to.source;
 		to.filepath = from.filepath || to.filepath;
 

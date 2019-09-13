@@ -20,6 +20,18 @@
 	border-bottom-color: currentColor;
 }
 
+.i-sidebar-list-item-label {
+	display: inline-block;
+	background: rgba(0, 0, 0, .2);
+	padding: 0 6px;
+	border-radius: 6px;
+	font-size: 10px;
+	margin-left: 6px;
+	font-weight: bold;
+	line-height: 24px;
+	position: absolute;
+}
+
 /**
  * Sidebar search filtering
  */

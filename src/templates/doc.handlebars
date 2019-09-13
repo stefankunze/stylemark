@@ -3,6 +3,11 @@
 	<span class="theme-content-element-source">
 		<span class="theme-content-element-source-label">Source:</span>
 		<span class="theme-content-element-source-path">{{doc.filepathRelativeToInput}}</span>
+        {{#if doc.status}}
+            <br>
+            <span class="theme-content-element-source-label">Status:</span>
+            <span class="theme-content-element-source-path">{{doc.status}}</span>
+        {{/if}}
 	</span>
 	<div class="theme-content-element-description">{{markdown doc.description}}</div>
 </div>
