@@ -35,7 +35,12 @@
 						class="i-sidebar-list-item theme-sidebar-element"
 						data-filter-value="{{name}}"
 					>
-						<span>{{name}}</span>
+						<span>
+							{{name}} 
+							{{#if status}}
+								<span class="i-sidebar-list-item-label i-sidebar-list-item-label--{{status}}">{{status}}</span>
+							{{/if}}
+						</span>
 					</a>
 				{{/each}}
 			</div>
